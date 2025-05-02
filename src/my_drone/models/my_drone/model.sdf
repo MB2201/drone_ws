@@ -19,10 +19,17 @@
       filename="ignition-gazebo-scene-broadcaster-system"
       name="ignition::gazebo::systems::SceneBroadcaster">
     </plugin>
+    <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre</render_engine>
+    </plugin>
 
     <model name="my_drone">
+      <!-- Single unified model approach -->
       <pose>0 0 0.5 0 0 0</pose>
-
+      
+      <!-- Main body -->
       <link name="base_link">
         <pose>0 0 0.1 0 0 0</pose>
         <inertial>
@@ -56,9 +63,39 @@
             <diffuse>0.5 0.5 0.5 1</diffuse>
           </material>
         </visual>
+        
+        <!-- LIDAR sensor -->
+        <sensor name="lidar_sensor" type="lidar">
+          <pose>0 0 0.15 0 0 0</pose>
+          <topic>lidar</topic>
+          <update_rate>10</update_rate>
+          <visualize>true</visualize>
+          <always_on>true</always_on>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>360</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.14159</min_angle>
+                <max_angle>3.14159</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.08</min>
+              <max>10.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+        </sensor>
       </link>
 
-      <!-- Front Right Motor (Red) -->
+      <!-- Motor links with internal inertia -->
       <link name="front_right_motor">
         <pose>0.15 -0.15 0.15 0 0 0</pose>
         <inertial>
@@ -94,7 +131,6 @@
         </visual>
       </link>
 
-      <!-- Front Left Motor (Green) -->
       <link name="front_left_motor">
         <pose>0.15 0.15 0.15 0 0 0</pose>
         <inertial>
@@ -130,7 +166,6 @@
         </visual>
       </link>
 
-      <!-- Rear Right Motor (Blue) -->
       <link name="rear_right_motor">
         <pose>-0.15 -0.15 0.15 0 0 0</pose>
         <inertial>
@@ -166,7 +201,6 @@
         </visual>
       </link>
 
-      <!-- Rear Left Motor (Yellow) -->
       <link name="rear_left_motor">
         <pose>-0.15 0.15 0.15 0 0 0</pose>
         <inertial>
@@ -202,27 +236,255 @@
         </visual>
       </link>
 
-      <!-- Joints -->
+      <!-- Propeller links -->
+      <link name="front_right_propeller">
+        <pose>0.15 -0.15 0.175 0 0 0</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name="propeller_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="propeller_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 0.8</ambient>
+            <diffuse>0.7 0.7 0.7 0.8</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="front_left_propeller">
+        <pose>0.15 0.15 0.175 0 0 0</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name="propeller_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="propeller_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 0.8</ambient>
+            <diffuse>0.7 0.7 0.7 0.8</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="rear_right_propeller">
+        <pose>-0.15 -0.15 0.175 0 0 0</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name="propeller_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="propeller_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 0.8</ambient>
+            <diffuse>0.7 0.7 0.7 0.8</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="rear_left_propeller">
+        <pose>-0.15 0.15 0.175 0 0 0</pose>
+        <inertial>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name="propeller_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="propeller_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 0.8</ambient>
+            <diffuse>0.7 0.7 0.7 0.8</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- Critical fix: Using rigidly enforced joints with feedback enabled -->
       <joint name="front_right_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>front_right_motor</child>
+        <!-- Set joint directly at the connection point -->
+        <pose>0 0 0 0 0 0</pose>
+        <!-- Enable force feedback -->
+        <physics>
+          <ode>
+            <provide_feedback>true</provide_feedback>
+            <!-- These parameters force a very rigid joint -->
+            <cfm>0</cfm>
+            <erp>1</erp>
+          </ode>
+        </physics>
       </joint>
 
       <joint name="front_left_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>front_left_motor</child>
+        <pose>0 0 0 0 0 0</pose>
+        <physics>
+          <ode>
+            <provide_feedback>true</provide_feedback>
+            <cfm>0</cfm>
+            <erp>1</erp>
+          </ode>
+        </physics>
       </joint>
 
       <joint name="rear_right_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>rear_right_motor</child>
+        <pose>0 0 0 0 0 0</pose>
+        <physics>
+          <ode>
+            <provide_feedback>true</provide_feedback>
+            <cfm>0</cfm>
+            <erp>1</erp>
+          </ode>
+        </physics>
       </joint>
 
       <joint name="rear_left_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>rear_left_motor</child>
+        <pose>0 0 0 0 0 0</pose>
+        <physics>
+          <ode>
+            <provide_feedback>true</provide_feedback>
+            <cfm>0</cfm>
+            <erp>1</erp>
+          </ode>
+        </physics>
+      </joint>
+
+      <!-- Propeller joints -->
+      <joint name="front_right_propeller_joint" type="revolute">
+        <parent>front_right_motor</parent>
+        <child>front_right_propeller</child>
+        <pose>0 0 0 0 0 0</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="front_left_propeller_joint" type="revolute">
+        <parent>front_left_motor</parent>
+        <child>front_left_propeller</child>
+        <pose>0 0 0 0 0 0</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="rear_right_propeller_joint" type="revolute">
+        <parent>rear_right_motor</parent>
+        <child>rear_right_propeller</child>
+        <pose>0 0 0 0 0 0</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="rear_left_propeller_joint" type="revolute">
+        <parent>rear_left_motor</parent>
+        <child>rear_left_propeller</child>
+        <pose>0 0 0 0 0 0</pose>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
       </joint>
     </model>
   </world>
 </sdf>
-
