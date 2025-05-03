@@ -1,0 +1,6 @@
+Invoking command in '/home/mouad/drone_ws/build/my_drone': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone
+Invoked command in '/home/mouad/drone_ws/build/my_drone' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone
+Invoking command in '/home/mouad/drone_ws/build/my_drone': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/mouad/drone_ws/build/my_drone -- -j8 -l8
+Invoked command in '/home/mouad/drone_ws/build/my_drone' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/mouad/drone_ws/build/my_drone -- -j8 -l8
+Invoking command in '/home/mouad/drone_ws/build/my_drone': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/mouad/drone_ws/build/my_drone
+Invoked command in '/home/mouad/drone_ws/build/my_drone' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/mouad/drone_ws/build/my_drone

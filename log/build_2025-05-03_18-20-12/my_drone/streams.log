@@ -1,0 +1,76 @@
+[0.069s] Invoking command in '/home/mouad/drone_ws/build/my_drone': /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone
+[0.258s] -- The C compiler identification is GNU 11.4.0
+[0.349s] -- The CXX compiler identification is GNU 11.4.0
+[0.358s] -- Detecting C compiler ABI info
+[0.415s] -- Detecting C compiler ABI info - done
+[0.422s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.422s] -- Detecting C compile features
+[0.423s] -- Detecting C compile features - done
+[0.427s] -- Detecting CXX compiler ABI info
+[0.507s] -- Detecting CXX compiler ABI info - done
+[0.518s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.518s] -- Detecting CXX compile features
+[0.519s] -- Detecting CXX compile features - done
+[0.526s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.927s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.019s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[1.079s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.085s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.099s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.115s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.137s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.196s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.199s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.285s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.311s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.353s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.363s] -- Looking for pthread.h
+[1.439s] -- Looking for pthread.h - found
+[1.440s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.511s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.513s] -- Found Threads: TRUE  
+[1.581s] -- Found ros_gz_sim: 0.244.16 (/opt/ros/humble/share/ros_gz_sim/cmake)
+[1.583s] -- Found ros_gz_bridge: 0.244.16 (/opt/ros/humble/share/ros_gz_bridge/cmake)
+[1.659s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") 
+[1.730s] -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") 
+[2.131s] Error parsing '/home/mouad/drone_ws/src/my_drone/package.xml':
+[2.181s] Traceback (most recent call last):
+[2.181s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 610, in parse_package_string
+[2.185s]     root = dom.parseString(data)
+[2.185s]   File "/usr/lib/python3.10/xml/dom/minidom.py", line 2000, in parseString
+[2.185s]     return expatbuilder.parseString(string)
+[2.185s]   File "/usr/lib/python3.10/xml/dom/expatbuilder.py", line 925, in parseString
+[2.186s]     return builder.parseString(string)
+[2.186s]   File "/usr/lib/python3.10/xml/dom/expatbuilder.py", line 223, in parseString
+[2.186s]     parser.Parse(string, True)
+[2.186s] xml.parsers.expat.ExpatError: syntax error: line 1, column 0
+[2.186s] 
+[2.186s] During handling of the above exception, another exception occurred:
+[2.186s] 
+[2.186s] Traceback (most recent call last):
+[2.186s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+[2.187s]     main()
+[2.187s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+[2.187s]     raise e
+[2.187s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+[2.187s]     package = parse_package_string(
+[2.187s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 612, in parse_package_string
+[2.187s]     raise InvalidPackage('The manifest contains invalid XML:\n%s' % ex, filename)
+[2.187s] catkin_pkg.package.InvalidPackage: Error(s) in package '/home/mouad/drone_ws/src/my_drone/package.xml':
+[2.187s] The manifest contains invalid XML:
+[2.187s] syntax error: line 1, column 0
+[2.206s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[2.206s]   execute_process(/usr/bin/python3
+[2.206s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[2.206s]   /home/mouad/drone_ws/src/my_drone/package.xml
+[2.206s]   /home/mouad/drone_ws/build/my_drone/ament_cmake_core/package.cmake)
+[2.206s]   returned error code 1
+[2.206s] Call Stack (most recent call first):
+[2.206s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[2.207s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)
+[2.207s]   CMakeLists.txt:20 (ament_package)
+[2.207s] 
+[2.207s] [0m
+[2.207s] -- Configuring incomplete, errors occurred!
+[2.207s] See also "/home/mouad/drone_ws/build/my_drone/CMakeFiles/CMakeOutput.log".
+[2.218s] Invoked command in '/home/mouad/drone_ws/build/my_drone' returned '1': /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone

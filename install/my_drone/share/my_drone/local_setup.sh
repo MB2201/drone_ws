@@ -1,0 +1,1 @@
+/home/mouad/drone_ws/build/my_drone/ament_cmake_environment_hooks/local_setup.sh
