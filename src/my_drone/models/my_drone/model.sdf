@@ -97,8 +97,8 @@
 
       <!-- Motor links with internal inertia -->
       <link name="front_right_motor">
-        <pose>0.15 -0.15 0.15 0 0 0</pose>
-        <inertial>
+       <pose relative_to="base_link">0.15 -0.15 0.05 0 0 0</pose>
+       <inertial>
           <mass>0.1</mass>
           <inertia>
             <ixx>0.001</ixx>
@@ -132,7 +132,7 @@
       </link>
 
       <link name="front_left_motor">
-        <pose>0.15 0.15 0.15 0 0 0</pose>
+        <pose relative_to="base_link">0.15 0.15 0.05 0 0 0</pose>
         <inertial>
           <mass>0.1</mass>
           <inertia>
@@ -167,7 +167,7 @@
       </link>
 
       <link name="rear_right_motor">
-        <pose>-0.15 -0.15 0.15 0 0 0</pose>
+        <pose relative_to="base_link">-0.15 -0.15 0.05 0 0 0</pose>
         <inertial>
           <mass>0.1</mass>
           <inertia>
@@ -202,7 +202,7 @@
       </link>
 
       <link name="rear_left_motor">
-        <pose>-0.15 0.15 0.15 0 0 0</pose>
+        <pose relative_to="base_link">-0.15 0.15 0.05 0 0 0</pose>
         <inertial>
           <mass>0.1</mass>
           <inertia>
@@ -238,7 +238,7 @@
 
       <!-- Propeller links -->
       <link name="front_right_propeller">
-        <pose>0.15 -0.15 0.175 0 0 0</pose>
+        <pose relative_to="front_right_motor">0 0 0.025 0 0 0</pose>
         <inertial>
           <mass>0.05</mass>
           <inertia>
@@ -273,7 +273,7 @@
       </link>
 
       <link name="front_left_propeller">
-        <pose>0.15 0.15 0.175 0 0 0</pose>
+        <pose relative_to="front_left_motor">0 0 0.025 0 0 0</pose>
         <inertial>
           <mass>0.05</mass>
           <inertia>
@@ -308,7 +308,7 @@
       </link>
 
       <link name="rear_right_propeller">
-        <pose>-0.15 -0.15 0.175 0 0 0</pose>
+        <pose relative_to="rear_right_motor">0 0 0.025 0 0 0</pose>
         <inertial>
           <mass>0.05</mass>
           <inertia>
@@ -343,7 +343,7 @@
       </link>
 
       <link name="rear_left_propeller">
-        <pose>-0.15 0.15 0.175 0 0 0</pose>
+        <pose relative_to="rear_left_motor">0 0 0.025 0 0 0</pose>
         <inertial>
           <mass>0.05</mass>
           <inertia>
@@ -381,23 +381,20 @@
       <joint name="front_right_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>front_right_motor</child>
-        <!-- Set joint directly at the connection point -->
-        <pose>0 0 0 0 0 0</pose>
-        <!-- Enable force feedback -->
+        <pose relative_to="base_link">0.15 -0.15 0.05 0 0 0</pose>
         <physics>
           <ode>
             <provide_feedback>true</provide_feedback>
-            <!-- These parameters force a very rigid joint -->
             <cfm>0</cfm>
             <erp>1</erp>
           </ode>
-        </physics>
+       </physics>
       </joint>
 
       <joint name="front_left_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>front_left_motor</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="base_link">0.15 0.15 0.05 0 0 0</pose>
         <physics>
           <ode>
             <provide_feedback>true</provide_feedback>
@@ -410,7 +407,7 @@
       <joint name="rear_right_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>rear_right_motor</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="base_link">0 0 0 0 0 0</pose>
         <physics>
           <ode>
             <provide_feedback>true</provide_feedback>
@@ -423,7 +420,7 @@
       <joint name="rear_left_motor_joint" type="fixed">
         <parent>base_link</parent>
         <child>rear_left_motor</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="base_link">0 0 0 0 0 0</pose>
         <physics>
           <ode>
             <provide_feedback>true</provide_feedback>
@@ -437,7 +434,7 @@
       <joint name="front_right_propeller_joint" type="revolute">
         <parent>front_right_motor</parent>
         <child>front_right_propeller</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="front_right_motor">0 0 0.025 0 0 0</pose>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -450,7 +447,7 @@
       <joint name="front_left_propeller_joint" type="revolute">
         <parent>front_left_motor</parent>
         <child>front_left_propeller</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="front_left_motor">0 0 0 0 0 0</pose>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -463,7 +460,7 @@
       <joint name="rear_right_propeller_joint" type="revolute">
         <parent>rear_right_motor</parent>
         <child>rear_right_propeller</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="rear_right_motor">0 0 0 0 0 0</pose>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -476,7 +473,7 @@
       <joint name="rear_left_propeller_joint" type="revolute">
         <parent>rear_left_motor</parent>
         <child>rear_left_propeller</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose relative_to="rear_left_motor">0 0 0 0 0 0</pose>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
