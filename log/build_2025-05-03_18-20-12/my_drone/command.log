@@ -1,0 +1,2 @@
+Invoking command in '/home/mouad/drone_ws/build/my_drone': /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone
+Invoked command in '/home/mouad/drone_ws/build/my_drone' returned '1': /usr/bin/cmake /home/mouad/drone_ws/src/my_drone -DCMAKE_INSTALL_PREFIX=/home/mouad/drone_ws/install/my_drone
